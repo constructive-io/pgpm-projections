@@ -15,7 +15,7 @@ restructure change granularity, or understand how change paths and
 Everything here lives in `@pgpmjs/transform` (`pgpm/transform`), with paths
 rendered by `@pgpmjs/naming-spec` (`pgpm/naming-spec`). The underlying facts,
 graph, and identity primitives come from `@pgsql/transform` (npm, from the
-pgsql-parser repo). Tracking issue: constructive-planning#1329.
+pgsql-parser repo).
 
 ## The substrate: facts, graph, identity
 

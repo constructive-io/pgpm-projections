@@ -18,4 +18,4 @@ pgpm diff /tmp/v2mod/shop-v2 /tmp/v3mod/shop-v3 \
 
 CI deploys shop@v1 then `shop-migrations` and asserts the catalog equals v3 loaded fresh — one deploy covers the whole v1→v3 history.
 
-Note: appended changes whose derived path collides with an existing change in the module (e.g. two deltas both altering `shop.orders`) are currently skipped with a notice rather than sequenced — tracked upstream in [constructive-planning#1344](https://github.com/constructive-io/constructive-planning/issues/1344).
+Note: appended changes whose derived path collides with an existing change in the module (e.g. two deltas both altering `shop.orders`) are currently skipped with a notice rather than sequenced.

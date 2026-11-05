@@ -13,4 +13,4 @@ pgpm diff examples/import-dump/output/shop /tmp/v2mod/shop-v2 \
 
 The delta is one model; every `--emit-*` flag is a projection of it. Tables are compared column-by-column and constraint-by-constraint, so the delta is `ALTER TABLE`, not a rebuild. 4 added, 1 removed, 3 changed.
 
-The v2 dump is first imported into a throwaway module so both sides go through the same normalization — diffing a module directly against a raw `.sql` file currently produces spurious deltas (see [constructive-planning#1340](https://github.com/constructive-io/constructive-planning/issues/1340)).
+The v2 dump is first imported into a throwaway module so both sides go through the same normalization — diffing a module directly against a raw `.sql` file currently produces spurious deltas.

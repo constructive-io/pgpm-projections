@@ -9,4 +9,4 @@ pgpm diff examples/import-dump/output/shop db:live_v2 --emit-migration /tmp/out 
 # Changed (7): ... tables report ~cols that are identical in both sides
 ```
 
-Workaround (what every other example does): bring both sides to the same representation first — import the database/dump into a throwaway module and diff module-vs-module ([diff-migration](../diff-migration)), or use two live databases ([diff-live-db](../diff-live-db)). Tracked upstream in [constructive-planning#1344](https://github.com/constructive-io/constructive-planning/issues/1344).
+Workaround (what every other example does): bring both sides to the same representation first — import the database/dump into a throwaway module and diff module-vs-module ([diff-migration](../diff-migration)), or use two live databases ([diff-live-db](../diff-live-db)).

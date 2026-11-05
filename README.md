@@ -53,14 +53,6 @@ Built on [pgpm](https://github.com/constructive-io/constructive/tree/main/pgpm):
 (identity → path projection), and the
 [pgpm CLI](https://github.com/constructive-io/constructive/tree/main/pgpm/cli).
 
-Planning issues:
-[constructive-planning#1340](https://github.com/constructive-io/constructive-planning/issues/1340)
-(import / transform / diff + this example repo),
-[constructive-planning#1344](https://github.com/constructive-io/constructive-planning/issues/1344)
-(the example matrix and this layout), and
-[constructive-planning#1329](https://github.com/constructive-io/constructive-planning/issues/1329)
-(the projections roadmap).
-
 ## The examples
 
 Every example lives in `examples/<name>/` with an explicit `input/` and a
@@ -91,9 +83,7 @@ produced it.
 | [diff-module-vs-db](examples/diff-module-vs-db) | a module vs a **live database** | *blocked* — documents the mixed-side normalization asymmetry + workaround |
 | [port-supabase](examples/port-supabase) | [Supabase-shaped app](examples/port-supabase/input/vendor-app) (`auth.uid()` RLS, `extensions.*`) + [apply recipes](examples/port-supabase/input/vendor-app-ported/pgpm.apply.json) | [ported to plain PostgreSQL](examples/port-supabase/output/vendor-app-materialized.sql) and [ported back to Supabase shape](examples/port-supabase/output/vendor-app-native-materialized.sql) (single-file views; `pgpm materialize`, both directions) |
 
-See the full combination matrix in
-[constructive-planning#1344](https://github.com/constructive-io/constructive-planning/issues/1344);
-the remaining unbuilt rows are blocked on known `pgpm diff` raw-SQL
+The remaining unbuilt combinations are blocked on known `pgpm diff` raw-SQL
 normalization bugs or on CLI features that haven't landed yet.
 
 ## Layout
