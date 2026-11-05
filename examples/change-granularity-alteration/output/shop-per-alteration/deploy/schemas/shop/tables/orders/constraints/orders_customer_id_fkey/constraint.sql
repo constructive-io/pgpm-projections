@@ -3,8 +3,8 @@
 
 -- requires: schemas/shop/schema
 -- requires: schemas/shop/tables/orders/table
+-- requires: schemas/shop/tables/customers/table
 -- requires: schemas/shop/tables/orders/columns/customer_id/column
--- requires: schemas/shop/tables/customers/constraints/customers_email_key/constraint
 
 
 ALTER TABLE ONLY shop.orders 

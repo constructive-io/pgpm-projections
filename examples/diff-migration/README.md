@@ -8,7 +8,7 @@
 pgpm import examples/diff-migration/input/shop.v2.sql --pkg shop-v2 --out /tmp/v2mod
 pgpm diff examples/import-dump/output/shop /tmp/v2mod/shop-v2 \
   --emit-migration examples/diff-migration/output --pkg shop-v1-to-v2 \
-  --emit-sql examples/diff-migration/output/shop.v1-to-v2.sql --verify
+  --emit-sql examples/diff-migration/output/shop.v1-to-v2.sql --allow-data-loss --verify
 ```
 
 The delta is one model; every `--emit-*` flag is a projection of it. Tables are compared column-by-column and constraint-by-constraint, so the delta is `ALTER TABLE`, not a rebuild. 4 added, 1 removed, 3 changed.

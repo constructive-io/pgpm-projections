@@ -10,5 +10,4 @@ CREATE OR REPLACE FUNCTION shop.order_total(p_order_id uuid) RETURNS int LANGUAG
   WHERE order_id = p_order_id
     AND quantity > 0;
 $$;
-COMMENT ON FUNCTION shop.order_total(p_order_id uuid) IS 'Sum of line totals for an order, in cents.';
 

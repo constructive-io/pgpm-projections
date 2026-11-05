@@ -8,7 +8,7 @@
 pgpm import examples/diff-migration/input/shop.v2.sql --pkg shop-v2 --out /tmp/v2mod
 pgpm diff examples/import-dump/output/shop /tmp/v2mod/shop-v2 \
   --emit-migration examples/diff-granularity/output --pkg shop-v1-to-v2-per-alteration \
-  --granularity atomic --change-granularity alteration
+  --granularity atomic --change-granularity alteration --allow-data-loss
 ```
 
 CI deploys shop@v1 + this migration and asserts the catalog equals v2 loaded fresh — same oracle as the object-granularity migration.

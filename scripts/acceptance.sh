@@ -343,10 +343,15 @@ if [ -d examples/diff-live-db ]; then
 
   note "pgpm diff db:live_a db:live_b -> live delta module"
   rm -rf examples/diff-live-db/output
-  pgpm diff db:live_a db:live_b --emit-migration examples/diff-live-db/output --pkg shop-live-delta --no-tty
+  pgpm diff db:live_a db:live_b --emit-migration examples/diff-live-db/output --pkg shop-live-delta --allow-data-loss --no-tty
 
   deploy_module examples/diff-live-db/output/shop-live-delta live_a
   assert_same_catalog live_a live_b "live_a + live delta vs live_b"
+
+  note "pgpm diff <module> db:live_b -> module-vs-db delta (drift gate + --verify oracle)"
+  rm -rf examples/diff-module-vs-db/output
+  pgpm diff examples/import-dump/output/shop db:live_b --emit-migration examples/diff-module-vs-db/output \
+    --pkg shop-module-vs-db --allow-data-loss --verify --no-tty
 else
   skip "live-db diff check (examples/diff-live-db)"
 fi

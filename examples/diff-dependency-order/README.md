@@ -16,7 +16,7 @@ pgpm import examples/diff-dependency-order/input/inventory.v1.sql --pkg inventor
 pgpm import examples/diff-dependency-order/input/inventory.v2.sql --pkg inventory-v2 --out /tmp/ddo
 pgpm diff examples/diff-dependency-order/output/inventory-v1 /tmp/ddo/inventory-v2 \
   --emit-migration examples/diff-dependency-order/output --pkg inventory-v1-to-v2 \
-  --emit-sql examples/diff-dependency-order/output/inventory.v1-to-v2.sql --verify
+  --emit-sql examples/diff-dependency-order/output/inventory.v1-to-v2.sql --allow-data-loss --verify
 ```
 
 Drops, `ALTER TABLE` steps, replacements and creates are nodes of one dependency graph; the plan is its topological order and each change's `requires` are its real edges:

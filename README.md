@@ -81,11 +81,13 @@ produced it.
 | [diff-granularity](examples/diff-granularity) | the v1 module vs v2 | [per-alteration migration](examples/diff-granularity/output/shop-v1-to-v2-per-alteration) — same delta, 7 → 17 independently revertible changes |
 | [diff-bundle](examples/diff-bundle) | the v1 module vs v2 | [the delta as a content-addressed bundle](examples/diff-bundle/output/shop.v1-to-v2.bundle.tar.gz) |
 | [transform-check](examples/transform-check) | [the module](examples/import-dump/output/shop) | nothing — the CLI's built-in scratch-DB lossless-transform oracle |
-| [diff-module-vs-db](examples/diff-module-vs-db) | a module vs a **live database** | *blocked* — documents the mixed-side normalization asymmetry + workaround |
+| [diff-module-vs-db](examples/diff-module-vs-db) | the v1 module vs a **live database** | [the same 7-change delta](examples/diff-module-vs-db/output/shop-module-vs-db) as module-vs-module — sides normalize symmetrically |
 | [port-supabase](examples/port-supabase) | [Supabase-shaped app](examples/port-supabase/input/vendor-app) (`auth.uid()` RLS, `extensions.*`) + [apply recipes](examples/port-supabase/input/vendor-app-ported/pgpm.apply.json) | [ported to plain PostgreSQL](examples/port-supabase/output/vendor-app-materialized.sql) and [ported back to Supabase shape](examples/port-supabase/output/vendor-app-native-materialized.sql) (single-file views; `pgpm materialize`, both directions) |
 
-The remaining unbuilt combinations are blocked on known `pgpm diff` raw-SQL
-normalization bugs or on CLI features that haven't landed yet.
+`pgpm diff` refuses data loss (drops, column type changes) and steps it cannot
+invert unless `--allow-data-loss` / `--allow-incomplete` are passed; renames are
+declared with `--rename schema.table[.column]=new`, never inferred. See the
+`pgpm-projections` skill for the full policy.
 
 ## Layout
 

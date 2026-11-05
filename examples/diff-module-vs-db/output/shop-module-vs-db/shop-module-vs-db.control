@@ -1,0 +1,5 @@
+# shop-module-vs-db extension
+comment = 'shop-module-vs-db extension'
+default_version = '0.0.1'
+relocatable = false
+superuser = false
