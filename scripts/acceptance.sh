@@ -266,6 +266,44 @@ else
 fi
 
 # ---------------------------------------------------------------------------
+# 3b. dependency-ordered delta: drops, ALTERs, replacements and creates of one
+#     diff deploy in graph order (examples/diff-dependency-order)
+# ---------------------------------------------------------------------------
+DDO=examples/diff-dependency-order
+if [ -d $DDO/output/inventory-v1-to-v2 ] && [ -d $DDO/output/inventory-v1 ]; then
+  deploy_module $DDO/output/inventory-v1 inv_migrated
+  deploy_module $DDO/output/inventory-v1-to-v2 inv_migrated
+
+  note "load $DDO/input/inventory.v2.sql fresh -> inv_v2_fresh"
+  $PSQL -d postgres -c 'CREATE DATABASE inv_v2_fresh'
+  $PSQL -d inv_v2_fresh -f $DDO/input/inventory.v2.sql
+  assert_same_catalog inv_migrated inv_v2_fresh "inventory v1 + dependency-ordered migration vs v2 fresh"
+
+  if [ -f $DDO/output/inventory.v1-to-v2.sql ]; then
+    note "load inventory v1 + linear delta SQL -> inv_sql_migrated"
+    $PSQL -d postgres -c 'CREATE DATABASE inv_sql_migrated'
+    $PSQL -d inv_sql_migrated -f $DDO/input/inventory.v1.sql
+    $PSQL -d inv_sql_migrated -f $DDO/output/inventory.v1-to-v2.sql
+    assert_same_catalog inv_sql_migrated inv_v2_fresh "inventory linear SQL delta vs v2 fresh"
+  else
+    skip "inventory linear SQL delta check ($DDO/output/inventory.v1-to-v2.sql)"
+  fi
+
+  # inventory-v1 and the migration are two independent modules on one database;
+  # a recursive revert would take inventory-v1 down with it.
+  note "revert $DDO/output/inventory-v1-to-v2 on inv_migrated (single module)"
+  (cd $DDO/output/inventory-v1-to-v2 && pgpm revert --database inv_migrated --package inventory-v1-to-v2 --yes --no-tty --no-recursive)
+  note "load inventory v1 fresh -> inv_v1_fresh"
+  $PSQL -d postgres -c 'CREATE DATABASE inv_v1_fresh'
+  $PSQL -d inv_v1_fresh -f $DDO/input/inventory.v1.sql
+  assert_same_catalog inv_migrated inv_v1_fresh "inventory migration reverted vs v1 fresh"
+  revert_module $DDO/output/inventory-v1 inv_migrated
+  assert_db_clean inv_migrated
+else
+  skip "dependency-ordered migration check ($DDO/output/inventory-v1-to-v2)"
+fi
+
+# ---------------------------------------------------------------------------
 # 4b. shop@v1 + shop-migrations (v1->v2 appended with v2->v3) == v3 fresh
 # ---------------------------------------------------------------------------
 if [ -d examples/append-migration/output/shop-migrations ] && [ -d examples/import-dump/output/shop ]; then

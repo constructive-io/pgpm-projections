@@ -1,0 +1,10 @@
+%syntax-version=1.0.0
+%project=inventory-v1
+%uri=inventory-v1
+
+schemas/inv/schema 2017-08-11T08:11:51Z constructive <constructive@5b0c196eeb62> # add schemas/inv/schema
+schemas/inv/tables/item/table [schemas/inv/schema] 2017-08-11T08:11:51Z constructive <constructive@5b0c196eeb62> # add schemas/inv/tables/item/table
+schemas/inv/tables/retired/table [schemas/inv/schema schemas/inv/tables/item/table] 2017-08-11T08:11:51Z constructive <constructive@5b0c196eeb62> # add schemas/inv/tables/retired/table
+schemas/inv/views/item_summary/view [schemas/inv/schema schemas/inv/tables/item/table] 2017-08-11T08:11:51Z constructive <constructive@5b0c196eeb62> # add schemas/inv/views/item_summary/view
+schemas/inv/views/item_stock/view [schemas/inv/schema schemas/inv/tables/item/table] 2017-08-11T08:11:51Z constructive <constructive@5b0c196eeb62> # add schemas/inv/views/item_stock/view
+schemas/inv/procedures/item_count/procedure [schemas/inv/schema] 2017-08-11T08:11:51Z constructive <constructive@5b0c196eeb62> # add schemas/inv/procedures/item_count/procedure

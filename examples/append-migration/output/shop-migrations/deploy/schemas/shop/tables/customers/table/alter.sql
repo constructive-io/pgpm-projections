@@ -4,6 +4,6 @@
 
 
 
-ALTER TABLE shop.customers ADD COLUMN marketing_opt_in boolean DEFAULT false NOT NULL;
 ALTER TABLE shop.customers DROP COLUMN phone RESTRICT;
+ALTER TABLE shop.customers ADD COLUMN marketing_opt_in boolean DEFAULT false NOT NULL;
 
