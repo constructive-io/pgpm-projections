@@ -7,8 +7,8 @@ CREATE OR REPLACE FUNCTION inv.item_count() RETURNS bigint LANGUAGE sql STABLE A
 $EOFCODE$;
 
 CREATE TABLE inv.warehouse (
-  id int PRIMARY KEY,
-  code text NOT NULL UNIQUE,
+  id int CONSTRAINT warehouse_pkey PRIMARY KEY,
+  code text NOT NULL CONSTRAINT warehouse_code_key UNIQUE,
   main_item_id int
 );
 
@@ -37,7 +37,7 @@ ALTER TABLE inv.item
   DROP COLUMN legacy_code RESTRICT;
 
 ALTER TABLE inv.item 
-  ALTER COLUMN qty TYPE bigint;
+  ALTER COLUMN qty TYPE bigint USING CAST(qty AS bigint);
 
 CREATE VIEW inv.item_stock AS SELECT
   i.id,

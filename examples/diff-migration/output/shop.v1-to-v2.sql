@@ -24,8 +24,6 @@ CREATE OR REPLACE FUNCTION shop.order_total(
     AND quantity > 0;
 $EOFCODE$;
 
-COMMENT ON FUNCTION shop.order_total(p_order_id uuid) IS 'Sum of line totals for an order, in cents.';
-
 CREATE TABLE shop.product_reviews (
   id uuid DEFAULT gen_random_uuid() NOT NULL,
   product_id uuid NOT NULL,

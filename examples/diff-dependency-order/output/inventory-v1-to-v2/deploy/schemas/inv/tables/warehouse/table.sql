@@ -5,8 +5,8 @@
 
 
 CREATE TABLE inv.warehouse (
-  id int PRIMARY KEY,
-  code text NOT NULL UNIQUE,
+  id int CONSTRAINT warehouse_pkey PRIMARY KEY,
+  code text NOT NULL CONSTRAINT warehouse_code_key UNIQUE,
   main_item_id int
 );
 

@@ -8,7 +8,7 @@
 # v1 -> v2: emit the initial migration module
 pgpm import examples/diff-migration/input/shop.v2.sql --pkg shop-v2 --out /tmp/v2mod
 pgpm diff examples/import-dump/output/shop /tmp/v2mod/shop-v2 \
-  --emit-migration examples/append-migration/output --pkg shop-migrations
+  --emit-migration examples/append-migration/output --pkg shop-migrations --allow-data-loss
 
 # v2 -> v3: append the next delta into the SAME module
 pgpm import examples/append-migration/input/shop.v3.sql --pkg shop-v3 --out /tmp/v3mod

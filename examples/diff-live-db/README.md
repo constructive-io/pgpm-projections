@@ -6,7 +6,7 @@
 
 ```sh
 # two live databases, e.g. loaded from the v1 and v2 dumps
-pgpm diff db:live_a db:live_b --emit-migration examples/diff-live-db/output --pkg shop-live-delta
+pgpm diff db:live_a db:live_b --emit-migration examples/diff-live-db/output --pkg shop-live-delta --allow-data-loss
 ```
 
 Because both sides go through pg_dump symmetrically, the delta matches the module-vs-module diff exactly (4 added / 1 removed / 3 changed for shop v1 vs v2). CI creates both databases, generates the delta live, deploys it onto the v1 database, and asserts the catalog then equals the v2 database.

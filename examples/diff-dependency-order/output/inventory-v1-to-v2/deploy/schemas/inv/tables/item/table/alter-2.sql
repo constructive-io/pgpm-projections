@@ -6,5 +6,5 @@
 
 
 ALTER TABLE inv.item DROP COLUMN legacy_code RESTRICT;
-ALTER TABLE inv.item ALTER COLUMN qty TYPE bigint;
+ALTER TABLE inv.item ALTER COLUMN qty TYPE bigint USING CAST(qty AS bigint);
 

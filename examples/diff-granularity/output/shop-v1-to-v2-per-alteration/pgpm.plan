@@ -4,9 +4,9 @@
 
 schemas/shop/tables/orders/indexes/idx_orders_placed_at/drop 2017-08-11T08:11:51Z constructive <constructive@5b0c196eeb62> # add schemas/shop/tables/orders/indexes/idx_orders_placed_at/drop
 schemas/shop/tables/customers/columns/phone/column/drop 2017-08-11T08:11:51Z constructive <constructive@5b0c196eeb62> # add schemas/shop/tables/customers/columns/phone/column/drop
-schemas/shop/tables/orders/constraints/orders_status_check/constraint/drop [schemas/shop/tables/orders/indexes/idx_orders_placed_at/drop] 2017-08-11T08:11:51Z constructive <constructive@5b0c196eeb62> # add schemas/shop/tables/orders/constraints/orders_status_check/constraint/drop
+schemas/shop/tables/orders/constraints/orders_status_check/constraint/drop 2017-08-11T08:11:51Z constructive <constructive@5b0c196eeb62> # add schemas/shop/tables/orders/constraints/orders_status_check/constraint/drop
 schemas/shop/tables/customers/columns/marketing_opt_in/column 2017-08-11T08:11:51Z constructive <constructive@5b0c196eeb62> # add schemas/shop/tables/customers/columns/marketing_opt_in/column
-schemas/shop/tables/orders/constraints/orders_status_check/constraint 2017-08-11T08:11:51Z constructive <constructive@5b0c196eeb62> # add schemas/shop/tables/orders/constraints/orders_status_check/constraint
+schemas/shop/tables/orders/constraints/orders_status_check/constraint [schemas/shop/tables/orders/constraints/orders_status_check/constraint/drop] 2017-08-11T08:11:51Z constructive <constructive@5b0c196eeb62> # add schemas/shop/tables/orders/constraints/orders_status_check/constraint
 schemas/shop/procedures/order_total/procedure 2017-08-11T08:11:51Z constructive <constructive@5b0c196eeb62> # add schemas/shop/procedures/order_total/procedure
 schemas/shop/tables/product_reviews/table 2017-08-11T08:11:51Z constructive <constructive@5b0c196eeb62> # add schemas/shop/tables/product_reviews/table
 schemas/shop/tables/product_reviews/columns/id/column [schemas/shop/tables/product_reviews/table] 2017-08-11T08:11:51Z constructive <constructive@5b0c196eeb62> # add schemas/shop/tables/product_reviews/columns/id/column

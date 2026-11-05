@@ -6,7 +6,7 @@
 
 ```sh
 pgpm diff examples/import-dump/output/shop /tmp/v2mod/shop-v2 --pkg shop-v1-to-v2 \
-  --emit-bundle "$PWD/examples/diff-bundle/output/shop.v1-to-v2.bundle.tar.gz"
+  --emit-bundle "$PWD/examples/diff-bundle/output/shop.v1-to-v2.bundle.tar.gz" --allow-data-loss
 ```
 
 The delta is one model; `--emit-migration`, `--emit-sql`, and `--emit-bundle` are all projections of it and compose in a single run.
