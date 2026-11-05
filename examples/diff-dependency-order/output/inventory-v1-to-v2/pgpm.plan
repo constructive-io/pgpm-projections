@@ -1,0 +1,15 @@
+%syntax-version=1.0.0
+%project=inventory-v1-to-v2
+%uri=inventory-v1-to-v2
+
+schemas/inv/views/item_stock/view/drop 2017-08-11T08:11:51Z constructive <constructive@5b0c196eeb62> # add schemas/inv/views/item_stock/view/drop
+schemas/inv/tables/retired/table/drop 2017-08-11T08:11:51Z constructive <constructive@5b0c196eeb62> # add schemas/inv/tables/retired/table/drop
+schemas/inv/procedures/item_count/procedure 2017-08-11T08:11:51Z constructive <constructive@5b0c196eeb62> # add schemas/inv/procedures/item_count/procedure
+schemas/inv/tables/warehouse/table 2017-08-11T08:11:51Z constructive <constructive@5b0c196eeb62> # add schemas/inv/tables/warehouse/table
+schemas/inv/tables/item/table/alter [schemas/inv/tables/warehouse/table] 2017-08-11T08:11:51Z constructive <constructive@5b0c196eeb62> # add schemas/inv/tables/item/table/alter
+schemas/inv/views/item_summary/view [schemas/inv/tables/item/table/alter] 2017-08-11T08:11:51Z constructive <constructive@5b0c196eeb62> # add schemas/inv/views/item_summary/view
+schemas/inv/tables/item/table/alter-2 [schemas/inv/views/item_stock/view/drop schemas/inv/views/item_summary/view] 2017-08-11T08:11:51Z constructive <constructive@5b0c196eeb62> # add schemas/inv/tables/item/table/alter-2
+schemas/inv/views/item_stock/view [schemas/inv/views/item_stock/view/drop schemas/inv/tables/item/table/alter-2] 2017-08-11T08:11:51Z constructive <constructive@5b0c196eeb62> # add schemas/inv/views/item_stock/view
+schemas/inv/tables/item/indexes/item_warehouse_idx [schemas/inv/tables/item/table/alter] 2017-08-11T08:11:51Z constructive <constructive@5b0c196eeb62> # add schemas/inv/tables/item/indexes/item_warehouse_idx
+schemas/inv/views/warehouse_stock/view [schemas/inv/tables/warehouse/table schemas/inv/tables/item/table/alter schemas/inv/tables/item/table/alter-2] 2017-08-11T08:11:51Z constructive <constructive@5b0c196eeb62> # add schemas/inv/views/warehouse_stock/view
+schemas/inv/procedures/restock/procedure 2017-08-11T08:11:51Z constructive <constructive@5b0c196eeb62> # add schemas/inv/procedures/restock/procedure

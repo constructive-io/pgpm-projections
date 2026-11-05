@@ -19,8 +19,6 @@ CREATE TABLE shop.product_reviews (
   )
 );
 
-GRANT SELECT, INSERT ON shop.product_reviews TO app_user;
-
 ALTER TABLE ONLY shop.product_reviews 
   ADD CONSTRAINT product_reviews_product_id_fkey
     FOREIGN KEY(product_id)
@@ -33,4 +31,6 @@ ALTER TABLE ONLY shop.product_reviews
     REFERENCES shop.customers (id);
 
 COMMENT ON TABLE shop.product_reviews IS 'Customer product reviews, 1-5 stars.';
+
+GRANT SELECT, INSERT ON shop.product_reviews TO app_user;
 
