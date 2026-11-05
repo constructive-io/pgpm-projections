@@ -6,7 +6,7 @@ allowBuilds:
   nx: true # transitive dep of lerna (via @nx/devkit), needed for our monorepo build/versioning tooling
   unrs-resolver: true # native resolver transitively required by jest-resolve for our test suite
 
-# Exempt from the wait: 6 scope glob(s), 20 first-party package(s).
+# Exempt from the wait: 6 scope glob(s), 25 first-party package(s).
 # First-party membership comes from what pyramation publishes on npm — waiting on your own release protects nothing.
 minimumReleaseAgeExclude:
   - "@constructive-db/*"
@@ -20,19 +20,24 @@ minimumReleaseAgeExclude:
   - csv-to-pg
   - find-and-require-package-json
   - genomic
+  - git-changed
   - inquirerer
   - libpg-query
   - makage
   - nested-obj
   - pg-cache
   - pg-env
+  - pg-proto-parser
   - pg-seed
   - pgsql-client
   - pgsql-deparser
   - pgsql-parser
   - pgsql-seed
   - pgsql-test
+  - plpgsql-deparser
+  - plpgsql-parser
   - pnpm-policy
+  - strfy-js
   - yamlize
   - yanse
 
